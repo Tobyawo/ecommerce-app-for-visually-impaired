@@ -30,14 +30,14 @@ export class HomeComponent implements OnInit {
 
 
     // TEXT TO SPEECH      
-    const intro = `FATTY WEBSTORE. ... ....
+    const intro = `Welcome to FATTY WEBSTORE. ... ....
                    Online Shop for Visually impaired person. ... ...
-                   To go to see Products. ...
+                   To see Products. ...
                    Press "Control", and then say "Product". ...`;
 
     const textSpeech = (text) => {
       const msg = new SpeechSynthesisUtterance();
-      msg.rate = 0.6;
+      msg.rate = 1.0;
       msg.text  = text;
       msg.lang = 'en-US';
       speechSynthesis.speak(msg);

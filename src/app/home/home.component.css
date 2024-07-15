@@ -50,6 +50,14 @@ ul .p-name{
     line-height: 2px;
 }
 
+#cnt {
+    background-image: url('src/app/home/hero2.jpg');
+    background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  }
+  
+
 /* .line-hg{
     line-height: 2px;;
 } */

@@ -43,7 +43,7 @@ export class ProductsComponent implements OnInit {
                        Press "Control", and then say the "Product Name". ...`
         const textSpeech = () => {
             const msg = new SpeechSynthesisUtterance();
-            msg.rate = 0.6;
+            msg.rate = 1.0;
             msg.text  = intro;
             msg.lang = 'en-US';
             speechSynthesis.speak(msg);
