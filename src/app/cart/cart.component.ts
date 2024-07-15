@@ -40,7 +40,7 @@ export class CartComponent implements OnInit {
     // this.cartData.push(localStorage.getItem('products'))  
 
     this.cartData.forEach((item)=>{
-      this.textArr.push(`${item.content.title}, it's price ${item.content.price} SEK per quantity. ...`)
+      this.textArr.push(`${item.content.title}, it's price ${item.content.price} Dollar per quantity. ...`)
     })
 
     // TEXT TO SPEECH

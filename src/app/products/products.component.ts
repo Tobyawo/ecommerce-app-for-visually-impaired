@@ -32,12 +32,12 @@ export class ProductsComponent implements OnInit {
       .then(data => {
         this.products = data.stories;    
         this.products.forEach((product) => {
-          this.textArr.push(`${product.content.title}, It's price ${product.content.price} SEK ...`);
+          this.textArr.push(`${product.content.title}, It's price ${product.content.price} Dollar ...`);
         });
       });
 
       // TEXT TO SPEECH      
-        const intro = `To listen available products. ...
+        const intro = `To listen to available products. ...
                        Please press "Control", and say "Read". ... ....
                        To select an item. ...
                        Press "Control", and then say the "Product Name". ...`

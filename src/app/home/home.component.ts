@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
 
 
     // TEXT TO SPEECH      
-    const intro = `Supernova. ... ....
+    const intro = `FATTY WEBSTORE. ... ....
                    Online Shop for Visually impaired person. ... ...
                    To go to see Products. ...
                    Press "Control", and then say "Product". ...`;
@@ -53,14 +53,14 @@ export class HomeComponent implements OnInit {
 
     //textSpeech(intro);
     let counter = 0;
-    function runThreeTimes(){
-      if(counter<3){
+    function runTwoTimes(){
+      if(counter<2){
         textSpeech(intro);
         counter++;
-        setTimeout(runThreeTimes, 50000);
+        setTimeout(runTwoTimes, 50000);
       }
     }
-    runThreeTimes();
+    runTwoTimes();
 
     const playAudio = () => {
       let audio = new Audio();
