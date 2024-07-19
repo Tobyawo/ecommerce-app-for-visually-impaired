@@ -28,11 +28,11 @@
                         </div>
                     </div>
                 </td>
-                <td data-th="Price">{{item.content.price}} kr</td>
+                <td data-th="Price">{{item.content.price}} $</td>
                 <td data-th="Quantity">
                     <input name="quantity" min="1" type="number" class="quantity px-2" [(ngModel)]="item.content.quantity" style="width: 60px;">
                 </td>
-                <td data-th="Subtotal" class="text-center">{{item.content.price*item.content.quantity}} kr</td>
+                <td data-th="Subtotal" class="text-center">{{item.content.price*item.content.quantity}} $</td>
             </tr>
         </tbody>
         

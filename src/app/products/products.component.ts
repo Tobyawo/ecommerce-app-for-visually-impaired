@@ -98,8 +98,10 @@ export class ProductsComponent implements OnInit {
 
       // TO FILTER PRODUCT BY COMMAND
       const filterProduct = (cmd: string)=>{
-        this.products.filter(product=>{     
-           if(product.content.title.toLowerCase() == cmd.toLowerCase()){
+        const cmdLower = cmd.toLowerCase();
+        this.products.filter(product=>{   
+          const titleLower = product.content.title.toLowerCase();  
+           if(titleLower === cmdLower || titleLower.startsWith(cmdLower)){
              this.zone.run(() => this.router.navigate(['/products', product.id], { relativeTo: this.route }));
              recognition.stop();
              checkKeyPressed();

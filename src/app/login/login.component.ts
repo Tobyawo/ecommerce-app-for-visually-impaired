@@ -34,7 +34,9 @@ export class LoginComponent implements OnInit {
     
     // LOG IN PAGE VOICE TEXT
     const logText = () => {
-      const msg = new SpeechSynthesisUtterance();    
+      const msg = new SpeechSynthesisUtterance();  
+      msg.rate = 0.8;
+      msg.pitch = 0.5; 
       msg.text =  `You are in Signin page. ...
                   If you are not registered yet. ..., 
                   Please Register first. ...

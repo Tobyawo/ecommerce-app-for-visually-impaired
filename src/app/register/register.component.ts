@@ -34,6 +34,8 @@ export class RegisterComponent implements OnInit {
       // LOG IN PAGE VOICE TEXT
       const logText = () => {
         const msg = new SpeechSynthesisUtterance();    
+        msg.rate = 0.8;
+        msg.pitch = 0.5;  
         msg.text =  `You are in Register page. ...
                     If you are already registered. ..., 
                     Please Sign In with your email and Password. ...

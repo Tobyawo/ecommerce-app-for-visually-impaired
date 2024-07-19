@@ -30,6 +30,7 @@ export class ShowComponent implements OnInit {
     const productId = this.route.snapshot.params.id;
     this.showItem.getStory(productId, {version: 'draft'})
     .then(data => {
+      console.log("received data is " + JSON.stringify(data))
       this.product = data.story.content;
       this.cartItem = data.story;
       
@@ -55,8 +56,8 @@ export class ShowComponent implements OnInit {
           const speaks = [{name: 'Alex', lang: 'en-US'}];
           const msg = new SpeechSynthesisUtterance();
           msg.volume = 1;
-          msg.rate = 1;
-          msg.pitch = 1.5;
+          msg.rate = 0.8;
+          msg.pitch = 0.5;
           msg.text  = `${this.textArr}`;
           const voice = speaks[0];
           msg.lang = voice.lang;
