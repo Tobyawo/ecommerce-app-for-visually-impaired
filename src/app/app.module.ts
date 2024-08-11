@@ -19,6 +19,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { FaceCaptureComponent } from './face-capture/face-capture.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LoginComponent } from './login/login.component';
     CartComponent,
     CheckoutComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    FaceCaptureComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,8 @@ import { NgxKeyboardEventsService, NgxKeyboardEvent } from 'ngx-keyboard-events'
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { DataSharingService } from './data-sharing.service';
+
 
 export interface IWindow extends Window {
   webkitSpeechRecognition: any;
@@ -26,7 +28,7 @@ export class RegisterComponent implements OnInit {
 
   
   constructor(private fAuth: AngularFireAuth, public router: Router,
-              private zone: NgZone, private keyListen: NgxKeyboardEventsService, private http: HttpClient) { }
+              private zone: NgZone, private keyListen: NgxKeyboardEventsService, private http: HttpClient,private dataSharingService: DataSharingService) { }
 
   ngOnInit() {
     document.getElementById("email").focus();
@@ -68,6 +70,13 @@ export class RegisterComponent implements OnInit {
                     if not then Press "Control" and say "Send". ...`
         speechSynthesis.speak(msg)
       }
+
+      const voiceText = () => {
+        const msg = new SpeechSynthesisUtterance();    
+        msg.text = `If you want voice authentication, then Press "Control" and say "voice" 
+                    if not then Press "Control" and say "Send". ...`
+        speechSynthesis.speak(msg)
+      }
    
       // TO NAVIGATE TO LOG IN PAGE
       const goLogin = () => {
@@ -91,6 +100,7 @@ export class RegisterComponent implements OnInit {
           document.getElementById("password").focus(); 
           passText(); 
           facialText();    
+          voiceText();
         }else if(keyEvent.code === 17) {
           recognition.start();
           playAudio();
@@ -127,8 +137,14 @@ export class RegisterComponent implements OnInit {
             this.register();
           }
           else if(command.toLowerCase() === 'capture'){
-            this.captureFace();
             this.register();
+            this.captureFace();
+           
+          }
+          else if(command.toLowerCase() === 'voice'){
+            this.register();
+            this.captureVoice();
+        
            
           }
       };
@@ -141,10 +157,9 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  
   // FUNCTION TO CAPTURE FACE 
-  captureFace() {
-    console.log("face captured")
+  captureVoice() {
+    console.log("Voice captured")
     // this.fAuth.auth.createUserWithEmailAndPassword(this.email, this.password)
     // .then(value => {
     //   this.zone.run(() => this.router.navigateByUrl('/cart/checkout'))
@@ -155,59 +170,102 @@ export class RegisterComponent implements OnInit {
     // });
   }
 
+  
+  // FUNCTION TO CAPTURE FACE 
+  // captureFace2() {
+    // console.log("face captured")
+    // this.captureFace()
+    // this.fAuth.auth.createUserWithEmailAndPassword(this.email, this.password)
+    // .then(value => {
+    //   this.zone.run(() => this.router.navigateByUrl('/cart/checkout'))
+    //   // this.router.navigate(['/cart/checkout']);
+    // })
+    // .catch(err => {
+    //   this.invalidForm = true;
+    // });
+  // }
 
-  captureFace2() {
-    this.showCamera = true;
-    navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
-      this.video.nativeElement.srcObject = stream;
-    }).catch(err => {
-      console.error("Error accessing camera: ", err);
-    });
+
+  captureFace() {
+    this.register();
+    // this.dataSharingService.setEmail(this.email);
+    // this.dataSharingService.setPassword(this.password);
+    // this.zone.run(() => this.router.navigateByUrl('/face-capture'));
+
+    this.zone.run(() => this.router.navigate(['/face-capture'], { 
+      queryParams: { 
+        email: this.email, 
+        password: this.password 
+      } 
+    }));
   }
 
+  // captureFace() {
 
-  takeSnapshot() {
-    const context = this.canvas.nativeElement.getContext('2d');
-    context.drawImage(this.video.nativeElement, 0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
-    const dataURL = this.canvas.nativeElement.toDataURL('image/png');
-    this.capturedImages.push(dataURL);
+  //   if (!this.video || !this.video.nativeElement) {
+  //     console.error("Video element is not available");
+  //     return;
+  //   }
+  //   console.log("face captured")
+  //   this.showCamera = true;
+  //   navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+  //     this.video.nativeElement.srcObject = stream;
+  //   }).catch(err => {
+  //     console.error("Error accessing camera: ", err);
+  //   });
+  // }
 
-    if (this.capturedImages.length < 10) {
-      setTimeout(() => this.takeSnapshot(), 500); // Take a picture every 500ms
-    } else {
-      // Stop the video stream
-      const stream = this.video.nativeElement.srcObject;
-      const tracks = stream.getTracks();
-      tracks.forEach(track => track.stop());
-      this.video.nativeElement.srcObject = null;
 
-      // Send the images to the backend
-      this.saveImages();
-    }
-  }
+  // takeSnapshot() {
 
-  saveImages() {
-    const payload = {
-      email: this.email,
-      images: this.capturedImages
+  //   if (!this.video.nativeElement || !this.canvas.nativeElement) {
+  //     console.error("Video or canvas element is not available");
+  //     return;
+  //   }
+
+  //   const context = this.canvas.nativeElement.getContext('2d');
+  //   context.drawImage(this.video.nativeElement, 0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
+  //   const dataURL = this.canvas.nativeElement.toDataURL('image/png');
+  //   this.capturedImages.push(dataURL);
+
+  //   if (this.capturedImages.length < 10) {
+  //     setTimeout(() => this.takeSnapshot(), 500); // Take a picture every 500ms
+  //   } else {
+  //     // Stop the video stream
+  //     const stream = this.video.nativeElement.srcObject;
+  //     const tracks = stream.getTracks();
+  //     tracks.forEach(track => track.stop());
+  //     this.video.nativeElement.srcObject = null;
+  
+  //   // Send the images to the backend
+  //     this.saveImages();
+  //   }
+  // }
+
+  // saveImages() {
+  //   const payload = {
+  //     email: this.email,
+  //     images: this.capturedImages
      
-    };
-    this.http.post('/api/save-images', payload).subscribe(response => {
-      console.log('Images saved successfully');
-      console.log("Image one is " + this.capturedImages[0])
-    }, error => {
-      console.error('Error saving images', error);
-    });
-  }
+  //   };
+  //   this.http.post('/api/save-images', payload).subscribe(response => {
+  //     console.log('Images saved successfully');
+  //     console.log("Sending to url...")
+  //     console.log("Image one is " + this.capturedImages)
+    
+  //   }, error => {
+  //     console.error('Error saving images', error);
+  //   });
+  // }
 
 
   
   // FUNCTION TO REGISTER
   register() {
+    console.log("Register called")
     this.fAuth.auth.createUserWithEmailAndPassword(this.email, this.password)
     .then(value => {
       console.log("go back to checkout")
-      this.zone.run(() => this.router.navigateByUrl('/cart/checkout'))
       // this.router.navigate(['/cart/checkout']);
     })
     .catch(err => {

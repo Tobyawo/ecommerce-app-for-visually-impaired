@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       speechSynthesis.speak(msg)
       const emailText = () => {
         const msg = new SpeechSynthesisUtterance();    
-        msg.text = `To login, If you want facial authentication, Press "Control" and say "face" 
+        msg.text = `To login, If you want voice authentication, Press "Control" and say "voice". ... 
         else, Please write your email address and press "Enter" . ...
 `
         speechSynthesis.speak(msg)
@@ -132,6 +132,9 @@ export class LoginComponent implements OnInit {
         else if(command.toLowerCase() == 'face'){
           this.loginWithFacialRecognition();       
         }
+        else if(command.toLowerCase() == 'voice'){
+          this.loginWithVoiceRecognition();       
+        }
     };
     recognition.onspeechend = () => {
         recognition.stop();
@@ -145,9 +148,20 @@ export class LoginComponent implements OnInit {
 
   loginWithFacialRecognition(){
     console.log("facial recognition login called")
+    this.zone.run(() => this.router.navigateByUrl('/face-capture'));
+
+  }
+
+  captureFace() {
+  
+  }
+
+
+  loginWithVoiceRecognition(){
+    console.log("Voice recognition login called")
 
     if(true){
-      this.serve.login(this.email, this.password) // credenntials from facial recogition response
+      this.serve.login(this.email, this.password) // credenntials from voice recogition response
     }
 
   }
