@@ -131,17 +131,17 @@ export class RegisterComponent implements OnInit {
           let last = event.results.length - 1;
           let command = event.results[last][0].transcript;
           console.log(command);
-          if(command.toLowerCase() === 'sign in'){
+          if(command.toLowerCase() === 'sign in' || command.startsWith('sign in')){
             goLogin();
-          }else if(command.toLowerCase() === 'send'){
+          }else if(command.toLowerCase() === 'send' || command.startsWith('send')){
             this.register();
           }
-          else if(command.toLowerCase() === 'capture'){
+          else if(command.toLowerCase() === 'capture' || command.startsWith('capture')){
             this.register();
             this.captureFace();
            
           }
-          else if(command.toLowerCase() === 'voice'){
+          else if(command.toLowerCase() === 'voice' || command.startsWith('voice')){
             this.register();
             this.captureVoice();
         

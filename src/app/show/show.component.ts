@@ -121,10 +121,10 @@ export class ShowComponent implements OnInit {
         let last = event.results.length - 1;
         let command = event.results[last][0].transcript;
     
-        if(command.toLowerCase() === 'continue'){     
+        if(command.toLowerCase() === 'continue' || command.startsWith('continue')){     
           goToPro();
           checkKeyPressed();
-        }else if(command.toLowerCase() === 'bye'){ 
+        }else if(command.toLowerCase() === 'bye' || command.startsWith('bye')){ 
           speechSynthesis.cancel(); 
           addToCart();
           goToCart();  

@@ -128,11 +128,11 @@ export class ProductsComponent implements OnInit {
           console.log(command);               
           filterProduct(command);
 
-          if(command.toLowerCase() === 'cart'){  
+          if(command.toLowerCase() === 'cart' || command.startsWith('cart')){  
             goToCart();
-          }else if(command.toLowerCase() === 'home'){  
+          }else if(command.toLowerCase() === 'home' || command.startsWith('home')){  
             goHome();
-          }else if(command.toLowerCase() === 'read'){
+          }else if(command.toLowerCase() === 'read' || command.startsWith('read')){
             sayText();            
           }
         

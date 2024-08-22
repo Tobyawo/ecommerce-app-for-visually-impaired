@@ -124,15 +124,15 @@ export class LoginComponent implements OnInit {
         let last = event.results.length - 1;
         let command = event.results[last][0].transcript;
         console.log(command);
-        if(command.toLowerCase() == 'sign up'){
+        if(command.toLowerCase() == 'sign up' || command.startsWith('sign up')){
           goRegister();
-        }else if(command.toLowerCase() == 'send'){
+        }else if(command.toLowerCase() == 'send' || command.startsWith('send')){
           this.login();
         }
-        else if(command.toLowerCase() == 'face'){
+        else if(command.toLowerCase() == 'face' || command.startsWith('face')){
           this.loginWithFacialRecognition();       
         }
-        else if(command.toLowerCase() == 'voice'){
+        else if(command.toLowerCase() == 'voice' || command.startsWith('voice')){
           this.loginWithVoiceRecognition();       
         }
     };

@@ -183,9 +183,9 @@ export class CartComponent implements OnInit {
         let command = event.results[last][0].transcript;
         console.log(command);
         removeProduct(command)
-        if(command.toLowerCase() === 'continue'){
+        if(command.toLowerCase() === 'continue' || command.startsWith('continue')){
           goToPro();
-        }else if(command.toLowerCase() === 'check out'){
+        }else if(command.toLowerCase() === 'check out' || command.startsWith('check out')){
             if(!this.user){
               goLogin();
             }else{

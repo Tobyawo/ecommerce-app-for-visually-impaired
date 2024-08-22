@@ -109,7 +109,7 @@ export class HomeComponent implements OnInit {
          let command = event.results[last][0].transcript;
          console.log(command);              
 
-         if(command.toLowerCase() === 'product'){  
+         if(command.toLowerCase() === 'product' || command.startsWith('product')){  
            speechSynthesis.cancel();
            recognition.stop()
            keyPressed = true;

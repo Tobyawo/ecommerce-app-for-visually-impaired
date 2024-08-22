@@ -82,11 +82,11 @@ export class CheckoutComponent implements OnInit {
         let last = event.results.length - 1;
         let command = event.results[last][0].transcript;
         console.log(command);
-        if(command.toLowerCase() === 'sign in'){
+        if(command.toLowerCase() === 'sign in' || command.startsWith('sign in')){
           goLogin();
-        }else if(command.toLowerCase() === 'product'){
+        }else if(command.toLowerCase() === 'product' || command.startsWith('product')){
           goProduct();
-        }else if(command.toLowerCase() === 'log out'){
+        }else if(command.toLowerCase() === 'log out' || command.startsWith('log out')){
           this.serve.signOut();
           goLogin();
         }
