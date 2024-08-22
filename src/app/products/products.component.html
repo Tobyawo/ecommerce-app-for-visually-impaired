@@ -1,0 +1,37 @@
+<div class="container-fluid mt-2 mb-5 bg-light col-11">
+
+  <div class="row">
+    <div class="col-12">
+        <div class="my-2">
+            <ul class="intro-text">
+                <h3 class="text-center text-info">To listen available products...</h3> 
+                <li>PLEASE PRESS "<span class="s">Ctrl</span>", & SAY "<span class="p-name">READ</span>"</li>
+                <li class="text-select">To select an item...</li>
+                <li>PRESS "<span class="s">Ctrl</span>", & SAY THE "<span class="p-name">PRODUCT NAME</span>"</li>
+            </ul>
+          </div>
+    </div>
+  </div>
+
+  <div class="card border-secondary pro-body">
+    <div class="card-header pro-header"><h3 class="pro-text text-center">AVAILABLE PRODUCTS</h3></div>
+    <div class="card-body">
+  <div class="row">
+    <div class="col-md-6 col-lg-3 com-sm-8 border-info p-2" *ngFor="let product of products">
+      <a class="route-link" [routerLink]="['/products', product.id]"> 
+      <div class="card">
+           <div class="card-header pro-img">
+               <img [src]="product.content.thumbnail" class="card-img-top">
+           </div>
+           <div class="card-block py-3 text-center bg-light">
+               <h5 class="card-title text-info">{{product.content.title}}</h5>
+               <p class="card-text">Price: {{product.content.price}} $</p>
+           </div>
+       </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+</div>
+</div>

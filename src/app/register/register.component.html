@@ -1,0 +1,75 @@
+<div class="container pt-3">
+    <div class="row justify-content-sm-center">
+      <div class="col-sm-12 col-md-6">
+        <div class="card border-info">
+          <div class="card-header">
+            <h3>SIGN UP</h3>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-7" style="background: url(../assets/ava2.jpg); background-size: cover; width: 100%; opacity: 0.6">
+                <form (ngSubmit)="register()" #registerForm="ngForm">
+                  <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" [(ngModel)]="email" name="email" class="form-control" id="email" placeholder="email" required>
+                  </div>
+                  <div id="pass-input" class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" [(ngModel)]="password" name="password" class="form-control" id="password" placeholder="password" required>
+                  </div>
+  
+                  <!-- New facial recognition option -->
+                  <div class="form-group">
+                    <label for="facialRecognition">Would you like to authenticate transactions with facial recognition?</label>
+                    <div class="form-check">
+                      <input type="checkbox" [(ngModel)]="facialRecognition" name="facialRecognition" class="form-check-input" id="facialRecognition">
+                      <label class="form-check-label" for="facialRecognition">Yes, I want to use facial recognition</label>
+                    </div>
+                  </div>
+  
+                  <!-- Security assurance message and button for facial recognition -->
+                  <div *ngIf="facialRecognition" class="form-group">
+                    <p>Your data is secure with us. Please click the button below to capture your face for subsequent transaction validation.</p>
+                    <button type="button" class="btn btn-primary" (click)="captureFace()">Capture Face</button>
+                  </div>
+  
+                  <!-- Security assurance message and button for speaker recognition -->
+                  <div class="form-group">
+                    <label for="speakerRecognition">Would you like to authenticate transactions with speaker recognition?</label>
+                    <div class="form-check">
+                      <input type="checkbox" [(ngModel)]="speakerRecognition" name="speakerRecognition" class="form-check-input" id="speakerRecognition">
+                      <label class="form-check-label" for="speakerRecognition">Yes, I want to use speaker recognition</label>
+                    </div>
+                  </div>
+  
+                  <div *ngIf="speakerRecognition" class="form-group">
+                    <p>Your data is secure with us. Please click the button below to capture your voice for subsequent transaction validation.</p>
+                    <button type="button" class="btn btn-primary" (click)="captureVoice()">Capture Voice</button>
+                  </div>
+  
+                  <p class="center" *ngIf="invalidForm">Password should be at least 6 characters</p>
+                </form>
+              </div>
+  
+              <div class="col-md-5 d-none d-sm-block text-secondary">
+                <p>To Register. ...<br>
+                  (1) - Please write your email and press "Enter"<br>
+                  (2) - Please write your password. <br>
+                  (3) - For facial authentication <br>
+                  Press "Ctrl" and say "Capture" <br>
+                  (4) - For voice authentication <br>
+                  Press "Ctrl" and say "Voice" <br>
+                  if not then Press "Ctrl" and say "Send".<br><br>
+  
+                  To get the Sign in from. ...<br>
+                  Press "Ctrl" and say "Sign in"
+                </p>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,9 @@
+<div>
+  <h2>Face Capture</h2>
+  <video #video width="640" height="480" autoplay></video>
+  <canvas #canvas width="640" height="480" style="display:none;"></canvas>
+  <button (click)="takeSnapshot()" *ngIf="!capturingDone">Capture Face</button>
+  <button (click)="takeSnapshotForLoginAuthentication()" *ngIf="!capturingDone">Capture Face For Login</button>
+  <!-- <button (click)="navigateToLogin()" *ngIf="capturingDone">Done</button> -->
+  <!-- <button *ngIf="capturingDone" (click)="navigateToLogin()">Done</button> -->
+</div>

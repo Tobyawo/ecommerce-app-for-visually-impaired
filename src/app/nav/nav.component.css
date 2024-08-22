@@ -1,0 +1,25 @@
+
+.navbar> a{
+    color: #c9a32b;
+    z-index: 1;
+}
+.navbar-brand{
+    font-size: 2rem;
+    color: bisque;
+}
+
+.fas{
+    color: #fff;
+}
+
+.circle{
+    width: 40px;
+    height: 60px;
+    background-color: rgb(235, 3, 3);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.circle:hover{
+    background: #c9a32b;
+}

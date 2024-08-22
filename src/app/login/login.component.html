@@ -1,0 +1,57 @@
+<div class="container pt-3">
+    <div class="row justify-content-sm-center">
+      <div class="col-sm-12 col-md-6">
+        <div class="card border-info">
+          <div class="card-header"><h3>SIGN IN</h3></div>
+          <div class="card-body">
+            <div class="row">
+
+              <div class="col-md-7" style="background: url(../assets/ava3.jpg); background-size: cover; width: 100%; opacity: 0.6">
+                <!-- <div class="col-md-7" style="background: url(../assets/ava.jpg); background-size: cover; width: 100%; opacity: 0.6"></div> -->
+                <form (ngSubmit)="login(loginForm)" #loginForm="ngForm">
+                  <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" [(ngModel)]="email" name="email" class="form-control" id="email" placeholder="email" required>
+                  </div>
+
+
+          <div >
+            <button type="button" class="btn btn-primary" (click)="loginWithFacialRecognition()">Login with facial recognition</button>
+        </div>
+        <br>
+
+        <div >
+          <button type="button" class="btn btn-primary" (click)="loginWithVoiceRecognition()">Login with voice recognition</button>
+      </div>
+
+
+                  <div id="pass-input" class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" [(ngModel)]="password" name="password" class="form-control" id="password" placeholder="password" required>
+                  </div>
+
+                  <!-- <button type="submit" class="btn btn-success d-none">Log In</button> -->
+                  <p class="text-center" *ngIf="invalidForm">Email or the Password does not match !!</p>
+                </form>
+              </div>
+
+              <div class="col-md-5 d-none d-sm-block text-secondary" >
+                 <p>To Sign In. ...<br>
+                    (1) - Write your email and press "Enter"<br>
+                    (2) - Write your password.<br>
+                    (3) - For facial authentication login <br>
+                    Press "Ctrl" and say "Face" <br>
+                    (4) - For voice authentication login <br>
+                    Press "Ctrl" and say "Voice" <br>
+                    if not then Press "Ctrl" and say "Send".<br><br>
+
+                    To get the Sign Up from. ...<br>
+                    Press "Ctrl" and say "Sign up"
+                 </p> 
+              </div>
+            </div>
+           </div>
+          </div>
+        </div>
+    </div>
+</div>

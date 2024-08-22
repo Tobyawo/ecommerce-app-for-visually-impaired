@@ -15,12 +15,23 @@
     "@angular/common": "~7.2.0",
     "@angular/compiler": "~7.2.0",
     "@angular/core": "~7.2.0",
+    "@angular/fire": "^5.2.1",
     "@angular/forms": "~7.2.0",
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "@fortawesome/fontawesome-free": "^5.8.2",
+    "@types/jquery": "^3.3.29",
+    "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
+    "firebase": "^6.1.0",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.4.1",
+    "ngx-bootstrap": "^4.2.0",
+    "ngx-keyboard-events": "^0.1.10",
+    "now": "^16.4.4",
     "rxjs": "~6.3.3",
+    "storyblok-js-client": "^1.0.22",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },
@@ -30,6 +41,8 @@
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
     "@types/node": "~8.9.4",
+    "@angular/fire": "^5.4.2",
+     "firebase": "^7.24.0",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "codelyzer": "~4.5.0",
@@ -43,6 +56,6 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.2.2"
+    "typescript": "~3.2.4"
   }
 }
