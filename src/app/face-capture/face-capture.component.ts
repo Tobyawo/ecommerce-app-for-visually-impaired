@@ -65,7 +65,9 @@ export class FaceCaptureComponent implements AfterViewInit, OnInit {
       // console.log("Captured images:", this.capturedImages);
       this.saveImages()
       // Send the images to the backend or handle them as needed
-      this.navigateToLogin()
+      // alert('Images saved successfully!'); // Display success prompt
+      // this.navigateToLogin();
+      // this.navigateToLogin()
     }
   }
 
@@ -100,41 +102,54 @@ export class FaceCaptureComponent implements AfterViewInit, OnInit {
 
 
 
-  saveImages() {
-    const payload = {
-      email: this.email,
-      password: this.password,
-      images: this.capturedImages.map(image => image.split(',')[1]) // Remove the data URL scheme
-    };
-    this.http.post('http://127.0.0.1:5005/train', payload).subscribe(response => {
+saveImages() {
+  const payload = {
+    email: this.email,
+    password: this.password,
+    images: this.capturedImages.map(image => image.split(',')[1]) // Remove the data URL scheme
+  };
+
+  this.http.post('https://9fdc-69-18-37-194.ngrok-free.app/train', payload).subscribe(
+    (response: any) => {
+      if(response){
+      alert('Images saved and registration completed successfully!'); // Display success prompt
       this.navigateToLogin();
-    }, error => {
+      }
+ 
+    },
+    error => {
       console.error('Error saving images', error);
-    });
-  }
+      alert('Failed to save images. Please try again.' + error); // Display error prompt
+    }
+  );
+}
 
+matchImages() {
+  const payload = {
+    images: this.capturedImages.map(image => image.split(',')[1]) // Remove the data URL scheme
+  };
 
-  matchImages() {
-    const payload = {
-      images: this.capturedImages.map(image => image.split(',')[1]) // Remove the data URL scheme
-    };
-  
-    this.http.post<{ confidence: number, email: string, password: string }>('http://127.0.0.1:5005//match-faces', payload)
-      .subscribe(response => {
-      
-        // Access the email and password from the response and use them to log in
-        const email = response.email;
-        const password = response.password;
+  this.http.post<{ confidence: number; email: string; password: string }>('https://9fdc-69-18-37-194.ngrok-free.app/match-faces', payload).subscribe(
+    (response: any) => {
+      // Access the email and password from the response and use them to log in
+      const email = response.email;
+      const password = response.password;
 
-        console.log('Payload === ' + JSON.stringify(response));
-        
+      console.log('Payload === ' + JSON.stringify(response));
+      if(response){
+        alert('Images matched successfully!' ); // Display success prompt
         this.serve.login(email, password);
-      }, error => {
-        console.error('Error matching images', error);
-      });
-  }
-  
+      }
+     
+    },
+    error => {
+      console.error('Error matching images', error);
+      alert('Failed to match images. Please try again.' + error); // Display error prompt
+    }
+  );
+}
 
+  
 
   navigateToCart() {
     this.router.navigateByUrl('/cart/checkout');

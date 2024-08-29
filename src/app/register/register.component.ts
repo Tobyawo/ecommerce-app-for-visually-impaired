@@ -170,24 +170,11 @@ export class RegisterComponent implements OnInit {
     // });
   }
 
-  
-  // FUNCTION TO CAPTURE FACE 
-  // captureFace2() {
-    // console.log("face captured")
-    // this.captureFace()
-    // this.fAuth.auth.createUserWithEmailAndPassword(this.email, this.password)
-    // .then(value => {
-    //   this.zone.run(() => this.router.navigateByUrl('/cart/checkout'))
-    //   // this.router.navigate(['/cart/checkout']);
-    // })
-    // .catch(err => {
-    //   this.invalidForm = true;
-    // });
-  // }
+
 
 
   captureFace() {
-    this.register();
+    // this.register();
     // this.dataSharingService.setEmail(this.email);
     // this.dataSharingService.setPassword(this.password);
     // this.zone.run(() => this.router.navigateByUrl('/face-capture'));

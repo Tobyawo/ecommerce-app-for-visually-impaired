@@ -185,7 +185,7 @@ export class CartComponent implements OnInit {
         removeProduct(command)
         if(command.toLowerCase() === 'continue' || command.startsWith('continue')){
           goToPro();
-        }else if(command.toLowerCase() === 'check out' || command.startsWith('check out')){
+        }else if(command.toLowerCase() === 'check out' || command.startsWith('check out') || command.startsWith('checkout') || command.startsWith('check outs')){
             if(!this.user){
               goLogin();
             }else{
