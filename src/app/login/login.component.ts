@@ -123,6 +123,9 @@ export class LoginComponent implements OnInit {
     recognition.onresult = (event: any) => {
         let last = event.results.length - 1;
         let command = event.results[last][0].transcript;
+        if (command.endsWith('.')) {
+          command = command.slice(0, -1);
+        }
         console.log(command);
         if(command.toLowerCase() == 'sign up' || command.startsWith('sign up')){
           goRegister();

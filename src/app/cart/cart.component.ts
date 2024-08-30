@@ -181,6 +181,9 @@ export class CartComponent implements OnInit {
     recognition.onresult = (event) => {
         let last = event.results.length - 1;
         let command = event.results[last][0].transcript;
+        if (command.endsWith('.')) {
+          command = command.slice(0, -1);
+        }
         console.log(command);
         removeProduct(command)
         if(command.toLowerCase() === 'continue' || command.startsWith('continue')){

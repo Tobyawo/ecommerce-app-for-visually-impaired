@@ -98,7 +98,11 @@ export class ProductsComponent implements OnInit {
 
       // TO FILTER PRODUCT BY COMMAND
       const filterProduct = (cmd: string)=>{
-        const cmdLower = cmd.toLowerCase();
+        var cmdLower = cmd.toLowerCase();
+        if (cmdLower.endsWith('.')) {
+          cmdLower = cmdLower.slice(0, -1);
+        }
+
         this.products.filter(product=>{   
           const titleLower = product.content.title.toLowerCase();  
            if(titleLower === cmdLower || titleLower.startsWith(cmdLower)){
@@ -125,6 +129,9 @@ export class ProductsComponent implements OnInit {
       recognition.onresult = function(event) {
           let last = event.results.length - 1;
           let command = event.results[last][0].transcript;
+          if (command.endsWith('.')) {
+            command = command.slice(0, -1);
+          }
           console.log(command);               
           filterProduct(command);
 
@@ -132,7 +139,7 @@ export class ProductsComponent implements OnInit {
             goToCart();
           }else if(command.toLowerCase() === 'home' || command.startsWith('home')){  
             goHome();
-          }else if(command.toLowerCase() === 'read' || command.startsWith('read')){
+          }else if(command.toLowerCase() === 'read.' || command.toLowerCase() === 'read' || command.startsWith('read')){
             sayText();            
           }
         
