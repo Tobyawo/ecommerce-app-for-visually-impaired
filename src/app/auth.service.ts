@@ -15,7 +15,7 @@ export class AuthService {
 
   invalidForm: boolean;
 
-  private apiUrl = 'https://9fdc-69-18-37-194.ngrok-free.app';
+  private apiUrl = 'https://f702-69-18-37-194.ngrok-free.app';
 
   constructor(private http: HttpClient,private fAuth: AngularFireAuth, private router: Router, private zone: NgZone) { 
 

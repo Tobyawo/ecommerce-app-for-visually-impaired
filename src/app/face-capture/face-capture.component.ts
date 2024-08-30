@@ -17,6 +17,8 @@ export class FaceCaptureComponent implements AfterViewInit, OnInit {
   email: string;
   password: string;
 
+  private apiUrl = 'https://f702-69-18-37-194.ngrok-free.app';
+
   capturedImages: string[] = [];
 
   constructor(private router: Router, private http: HttpClient, private dataSharingService: DataSharingService, private serve: AuthService, private route: ActivatedRoute) {}
@@ -108,8 +110,9 @@ saveImages() {
     password: this.password,
     images: this.capturedImages.map(image => image.split(',')[1]) // Remove the data URL scheme
   };
+  
 
-  this.http.post('https://9fdc-69-18-37-194.ngrok-free.app/train', payload).subscribe(
+  this.http.post(`${this.apiUrl}/train`, payload).subscribe(
     (response: any) => {
       if(response){
       alert('Images saved and registration completed successfully!'); // Display success prompt
@@ -128,8 +131,9 @@ matchImages() {
   const payload = {
     images: this.capturedImages.map(image => image.split(',')[1]) // Remove the data URL scheme
   };
+  
 
-  this.http.post<{ confidence: number; email: string; password: string }>('https://9fdc-69-18-37-194.ngrok-free.app/match-faces', payload).subscribe(
+  this.http.post<{ confidence: number; email: string; password: string }>(`${this.apiUrl}/match-faces`, payload).subscribe(
     (response: any) => {
       // Access the email and password from the response and use them to log in
       const email = response.email;
