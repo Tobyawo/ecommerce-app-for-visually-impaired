@@ -22,3 +22,5 @@ EXPOSE 4200
 
 
 CMD ["ng", "serve", "--host", "0.0.0.0"]
+
+# export NODE_OPTIONS=--openssl-legacy-provider
